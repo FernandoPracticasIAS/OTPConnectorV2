@@ -7,7 +7,7 @@ export class MessageRelevancePolicy {
     ){}
     public isRelevant(message: EmailMessage): boolean {
         const senderOk = this.allowedSenders ? this.allowedSenders.test(message.from) : true;
-        const subjectOk = this.allowedSubjects ? this.allowedSubjects.test(message.subject) : true;
+        const subjectOk = this.allowedSubjects ? this.allowedSubjects.test(message.subject.getValue()) : true;
         return senderOk && subjectOk;
     }
 }
